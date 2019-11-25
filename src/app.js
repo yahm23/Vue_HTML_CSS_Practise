@@ -5,16 +5,22 @@ document.addEventListener('DOMContentLoaded', ()=>{
     el:"#app",
 
     data:{
-      tasks:["Dishes","Mail Letter"],
+      tasks:[
+        {name:"Dishes",priority:false},
+        {name:"Mail Letter",priority:true}
+      ],
       newTask:""
     },
 
     methods:{
       saveTask:function(){
-        this.tasks.push(this.newTask);
+        this.tasks.push({name:this.newTask,priority:false});
         this.newTask = ""
       }
-
+      //
+      // changePriority:function(newP,index){
+      //   this.tasks[index].priority= newP;
+      // }
     }
 
   });

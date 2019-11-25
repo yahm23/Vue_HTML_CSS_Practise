@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>To Do List</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="./js/bundle.js"></script>
   </head>
   <body>
@@ -10,8 +12,19 @@
 
     <div id="app">
       <ul>
-        <li v-for="(task,index) in tasks">{{task}}
+        <li v-for="(task,index) in tasks" v-bind:class="task.priority? 'not-a-priority':'priority'">
+          <span>{{task.name}}</span>
+          <br>
+
+          <span>Priority:
+
+          <input type="radio" v-bind:name="'priority${index}'" value="High" v-on:click="task.priority=true">High
+
+          <input type="radio" v-bind:name="'priority${index}'" value="Low" v-on:click="task.priority=false">Low
+
+           </span>
         </li>
+
       </ul>
 
       <form v-on:submit.prevent="saveTask">
